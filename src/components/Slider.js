@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -10,15 +10,15 @@ const useStyles = makeStyles({
   },
 });
 
+function valuetext(value) {
+  return `${value}`;
+}
+
 
 export default function Sliders(props) {
 
-  const [speed,setSpeed] = useState(100);
+  const {handleChange} = props;
   const classes = useStyles();
-
-  const updateSpeed = (speed) => {
-    setSpeed(200-speed)
-  }
 
   return (
     <div className={classes.root}>
@@ -26,21 +26,22 @@ export default function Sliders(props) {
         Speed (ms)
       </Typography>
       <Grid container spacing={2}>
-        <Grid item>Faster</Grid>
+        <Grid item>Slower</Grid>
         <Grid item xs>
         <Slider
                     defaultValue={100}
-                    getAriaValueText={updateSpeed}
+                    getAriaValueText={valuetext}
                     aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
-                    step={1}
-                    speed={speed}
+                    step={100}
                     marks={false}
                     min={100}
-                    max={1000}/>
+                    max={1000}
+                    onChange={handleChange}
+                    />
                   
         </Grid>
-        <Grid item>Slower</Grid>
+        <Grid item>Faster</Grid>
       </Grid>
     </div>
   );

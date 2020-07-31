@@ -33,12 +33,20 @@ function Grid() {
 
   const [running, setRunning] = useState(false);
   const [gen, setGen] = useState(0);
+  const [value, setValue] = useState(300);
 
   const genRef = useRef();
   genRef.current = gen;
 
   const runningRef = useRef(running);
   runningRef.current = running;
+
+  const speedRef = useRef(value);
+  speedRef.current = value;
+
+  function handleChange(e) {
+    setValue(parseInt(e.target.ariaValueNow, 10));
+  }
 
 
   const runSimulation = useCallback(() => {
@@ -69,7 +77,7 @@ function Grid() {
       });
     });
 
-    setTimeout(runSimulation, 100);
+    setTimeout(runSimulation, speedRef.current);
   }, []);
 
   return (
@@ -119,7 +127,7 @@ function Grid() {
             <option>figure8</option>
             <option>clover</option>
           </select>
-          <Sliders />
+          <Sliders handleChange={handleChange}/>
           </div>
       <div
         style={{
