@@ -74,6 +74,7 @@ function Grid() {
 
   return (
     <>
+    <div className="buttons">
       <button
         onClick={() => {
           setRunning(!running);
@@ -119,6 +120,7 @@ function Grid() {
             <option>clover</option>
           </select>
           <Sliders />
+          </div>
       <div
         style={{
           display: "grid",

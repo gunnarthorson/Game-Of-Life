@@ -4,7 +4,7 @@ const Rules = () => {
     return (
         <div>
             <div className="info">
-                <h1>Rules Of The Game</h1>
+                <h2>Rules Of The Game</h2>
                 <div className="rules">
                     <p>Any live cell with fewer than two live neighbours dies, as if by underpopulation.</p>
                     <p>Any live cell with more than three live neighbours dies, as if by overpopulation.</p>
